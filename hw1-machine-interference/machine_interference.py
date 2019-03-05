@@ -68,11 +68,11 @@ class Simulator:
     def add(self, *machines):
         self.machines += machines
 
-    def tick(self):
-        """ Ticks the master clock and jump to next event """
+    def next_event(self):
+        """ Jumps to the next event """
         possible_event_time = [t for t in (self.machine_clocks + [self.repair_man.next_fixed_time]) if t != -1]
         self.master_clock = min(possible_event_time)
-       
+
         # Check if any machine is broken
         for i, machine in enumerate(self.machines):
             if machine.next_broken_time != -1 and self.master_clock == machine.next_broken_time:
@@ -99,7 +99,7 @@ class Simulator:
         print(self.__str__())
 
         for i in range(0, rows):
-            self.tick()
+            self.next_event()
 
 
 
