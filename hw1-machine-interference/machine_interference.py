@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 
+# Copyright 2019 Marco Wang <m.aesophor@gmail.com>
+
 from queue import Queue
 
 class Machine:
     """ A machine has an id, lifetime and next_broken_time """
-    def __init__(self, id: int, lifetime: int, next_broken_time: int):
-        self.id = id
-        self.lifetime = lifetime
+    def __init__(self, next_broken_time: int, lifetime: int):
         self.next_broken_time = next_broken_time
+        self.lifetime = lifetime
 
     @property
     def is_broken(self):
@@ -108,9 +109,9 @@ if __name__ == '__main__':
     simulator = Simulator()
 
     simulator.add(
-        Machine(1, 10, 1),
-        Machine(2, 10, 4),
-        Machine(3, 10, 9),
+        Machine(1, 10),
+        Machine(4, 10),
+        Machine(9, 10),
     )
 
     simulator.run(10)
