@@ -109,9 +109,9 @@ if __name__ == '__main__':
     simulator = Simulator()
 
     simulator.add(
-        Machine(1, 10),
-        Machine(4, 10),
-        Machine(9, 10),
+        Machine(2, 10),
+        Machine(3, 10),
+        Machine(8, 10),
     )
 
     simulator.run(10)
