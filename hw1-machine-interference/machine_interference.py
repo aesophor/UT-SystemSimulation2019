@@ -6,7 +6,6 @@
 from queue import Queue
 
 class Machine:
-    """ A machine has an id, lifetime and next_broken_time """
     def __init__(self, next_broken_time: int, lifetime: int):
         self.next_broken_time = next_broken_time
         self.lifetime = lifetime
