@@ -1,3 +1,5 @@
+// Copyright 2019 Marco Wang <m.aesophor@gmail.com>
+
 #ifndef EVENT_MANAGER_H_
 #define EVENT_MANAGER_H_
 

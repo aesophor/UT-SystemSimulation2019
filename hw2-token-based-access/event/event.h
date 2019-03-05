@@ -1,3 +1,5 @@
+// Copyright 2019 Marco Wang <m.aesophor@gmail.com>
+
 #ifndef EVENT_H_
 #define EVENT_H_
 

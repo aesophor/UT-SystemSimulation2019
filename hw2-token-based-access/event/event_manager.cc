@@ -1,3 +1,5 @@
+// Copyright 2019 Marco Wang <m.aesophor@gmail.com>
+
 #include "event_manager.h"
 
 EventManager::EventManager() {
