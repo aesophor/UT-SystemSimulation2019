@@ -75,9 +75,7 @@ class Simulator:
        
         # Check if any machine is broken
         for i, machine in enumerate(self.machines):
-            # Find the event(s) that happen at this moment
             if machine.next_broken_time != -1 and self.master_clock == machine.next_broken_time:
-                # Machine broken event
                 self.machines[i].set_broken(True, self.master_clock)
                 self.repair_man.repair(self.machines[i], self.master_clock)
                 print(self.__str__())
