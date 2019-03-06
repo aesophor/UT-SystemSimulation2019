@@ -5,19 +5,22 @@
 
 #include <vector>
 #include <unordered_map>
+#include <functional>
 
 #include "event.h"
+
+typedef std::function<void(const Event& e)> EventHandler;
 
 class EventManager {
 public:
     EventManager();
     virtual ~EventManager() = default;
 
-    void AddEventHandler(EventType type, void (*handler)(const Event&));
+    void AddEventHandler(EventType type, const EventHandler& handler);
     void FireEvent(const Event& e) const;
     
 private:
-    std::unordered_map<EventType, std::vector<void (*)(const Event&)>> handlers_;
+    std::unordered_map<EventType, std::vector<EventHandler>> handlers_;
 };
 
 #endif

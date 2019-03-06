@@ -11,14 +11,14 @@ enum class EventType {
 
 class Event {
 public:
-    EventType GetEventType() const;
+    virtual EventType event_type() const;
 
 protected:
     Event(EventType type);
     virtual ~Event() = default;
 
 private:
-    const EventType type_;
+    const EventType event_type_;
 };
 
 #endif

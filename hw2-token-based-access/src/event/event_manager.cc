@@ -8,12 +8,12 @@ EventManager::EventManager() {
 }
 
 
-void EventManager::AddEventHandler(EventType type, void (*handler)(const Event&)) {
+void EventManager::AddEventHandler(EventType type, const EventHandler& handler) {
     handlers_.at(type).push_back(handler);
 }
 
 void EventManager::FireEvent(const Event& e) const {
-    for (auto handler : handlers_.at(e.GetEventType())) {
+    for (auto handler : handlers_.at(e.event_type())) {
         handler(e);
     }
 }
