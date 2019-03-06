@@ -44,7 +44,6 @@ private:
     static const int kPacketDepartInterval = 6;
 
     int master_clock_;
-    int current_node_; // node id of the token owner
 
     EventManager* event_manager_;
     std::vector<Node> nodes_;

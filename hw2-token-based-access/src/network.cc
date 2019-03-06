@@ -21,7 +21,6 @@ Network::Node::Node(int arrival_interval, int next_arrival)
 
 Network::Network(EventManager* event_manager)
     : master_clock_(0),
-      current_node_(0),
       event_manager_(event_manager) {
 
  //   event_manager_->AddEventHandler(EventType::ARRIVAL, [&](const Event& e) {
@@ -32,12 +31,13 @@ Network::Network(EventManager* event_manager)
 
 void Network::Run(int row_count) {
     cout << "MC\t";
-    for (size_t i = 1; i <= nodes_.size(); i++) {
-        cout << "Arr" << i << "\t"
-            << "Dep" << i << "\t"
-            << "Size" << i << "\t";
+    for (size_t i = 0; i < nodes_.size(); i++) {
+        cout << "Arr" << i + 1 << "\t"
+            << "Dep" << i + 1 << "\t"
+            << "Size" << i + 1 << "\t";
     }
     cout << "Node no\tTimeout\tNext pass" << endl;
+    PrintRow();
 
     for (int i = 0; i < row_count; i++) {
         NextEvent();
@@ -46,12 +46,14 @@ void Network::Run(int row_count) {
 
 void Network::PrintRow() const {
     cout << master_clock_ << "\t";
-    for (size_t i = 1; i <= nodes_.size(); i++) {
+
+    for (size_t i = 0; i < nodes_.size(); i++) {
         cout << nodes_[i].next_arrival << "\t"
             << nodes_[i].next_departure << "\t"
             << nodes_[i].size << "\t";
     }
-    cout << token_.node_no << "\t"
+
+    cout << token_.node_no + 1 << "\t"
         << token_.timeout << "\t"
         << token_.next_pass_time << endl;
 }
@@ -91,7 +93,7 @@ void Network::NextEvent() {
 
     
     // Secondly we fire the token related events (if any)
-    if (token_.timeout == master_clock_ && nodes_[current_node_].next_departure != None) {
+    if (token_.timeout == master_clock_ && nodes_[token_.node_no].next_departure != None) {
         //event_manager_->FireEvent(TokenTimeoutEvent());
         OnTokenTimeout();
     } else if (token_.next_pass_time == master_clock_) {
@@ -133,6 +135,11 @@ void Network::OnTokenTimeout() {
 
 void Network::OnPassToken() {
     token_.node_no = (token_.node_no + 1) % nodes_.size();
-    token_.timeout = master_clock_ + 15; // remove this hardcoded shit later
-    token_.next_pass_time = None;
+
+    if (nodes_[token_.node_no].size > 0) {
+        token_.timeout = master_clock_ + 15; // remove this hardcoded shit later
+        token_.next_pass_time = None;
+    } else {
+        token_.next_pass_time = master_clock_ + 1;
+    }
 }
