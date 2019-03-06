@@ -9,7 +9,7 @@ EventManager::EventManager() {
 
 
 void EventManager::AddEventHandler(EventType type, const EventHandler& handler) {
-    handlers_.at(type).push_back(handler);
+    handlers_[type].push_back(handler);
 }
 
 void EventManager::FireEvent(const Event& e) const {

@@ -5,18 +5,20 @@
 
 class ArrivalEvent : public Event {
 public:
-    ArrivalEvent(int node_id) : Event(EventType::ARRIVAL), kNodeId(node_id) {}
+    ArrivalEvent(int node_id) : Event(EventType::ARRIVAL), kNodeId_(node_id) {}
     virtual ~ArrivalEvent() = default;
+    int kNodeId() const { return kNodeId_; }
 private:
-    const int kNodeId;
+    int kNodeId_;
 };
 
 class DepartureEvent : public Event {
 public:
-    DepartureEvent(int node_id) : Event(EventType::DEPARTURE), kNodeId(node_id) {}
+    DepartureEvent(int node_id) : Event(EventType::DEPARTURE), kNodeId_(node_id) {}
     virtual ~DepartureEvent() = default;
+    int kNodeId() const { return kNodeId_; }
 private:
-    const int kNodeId;
+    int kNodeId_;
 };
 
 class TokenTimeoutEvent : public Event {
