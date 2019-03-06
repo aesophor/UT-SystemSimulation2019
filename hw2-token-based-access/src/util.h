@@ -17,6 +17,6 @@ int min(const std::vector<int>& numbers) {
     return min;
 }
 
-}
+} // namespace util
 
 #endif
