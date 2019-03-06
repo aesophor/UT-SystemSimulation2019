@@ -7,15 +7,7 @@
 
 namespace util {
 
-int min(const std::vector<int>& numbers) {
-    int min = numbers[0];
-    for (auto num : numbers) {
-        if (num < min) {
-            min = num;
-        }
-    }
-    return min;
-}
+int min(const std::vector<int>& numbers);
 
 } // namespace util
 
