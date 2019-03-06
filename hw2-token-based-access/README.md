@@ -9,6 +9,13 @@
 * All event handlers are lambdas, see `Network::Network()`
 * When an event is fired, all handlers of that event type will be invoked
 
+## Run
+Requires g++ with C++11 support
+```
+$ make 
+$ make run
+```
+
 ## Result
 ```
 MC	Arr1	Dep1	Size1	Arr2	Dep2	Size2	Arr3	Dep3	Size3	Node no	Timeout	Next pass
