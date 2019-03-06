@@ -8,6 +8,7 @@
 #include "event/event_manager.h"
 
 #define None -1
+#define Timeout -2
 
 class Network {
 public:

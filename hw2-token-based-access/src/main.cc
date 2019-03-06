@@ -17,7 +17,7 @@ int main(int argc, char* args[]) {
         network.AddNode(10, 2);
         network.AddNode(15, 4);
         network.AddNode(20, 6);
-        network.Run(10);
+        network.Run(35);
     } catch (const std::exception& ex) {
         cout << ex.what() << endl;
     }

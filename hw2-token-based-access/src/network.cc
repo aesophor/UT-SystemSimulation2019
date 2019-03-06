@@ -74,7 +74,7 @@ void Network::NextEvent() {
 
     // Remove the candidates whose value is None (-1).
     times.erase(std::remove_if(times.begin(), times.end(), [](int t) {
-        return t == None; }), times.end());
+        return t < 0; }), times.end());
 
     // Update master clock.
     master_clock_ = util::min(times);
@@ -127,9 +127,11 @@ void Network::OnPacketDeparture(int node_id) {
 void Network::OnTokenTimeout() {
     // Check if there's ongoing transmission.
     // We should wait until the ongoing transmission is done.
-    if (!token_.has_ongoing_transmission) {
+    if (nodes_[token_.node_no].next_departure == None) {
         token_.timeout = None;
         token_.next_pass_time = master_clock_ + 1;
+    } else {
+        token_.timeout = Timeout;
     }
 }
 
