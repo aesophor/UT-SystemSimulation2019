@@ -21,8 +21,8 @@ Network::Node::Node(int arrival_interval, int next_arrival)
       size(0) {}
 
 Network::Network(EventManager* event_manager)
-    : master_clock_(0),
-      event_manager_(event_manager) {
+    : event_manager_(event_manager),
+      master_clock_(0) {
 
     event_manager_->AddEventHandler(EventType::ARRIVAL, [&](const Event& e) {
         const ArrivalEvent* ev = dynamic_cast<const ArrivalEvent*>(&e);
@@ -139,12 +139,30 @@ ostream& operator<< (ostream& os, const Network& network) {
     os << network.master_clock_ << "\t";
 
     for (size_t i = 0; i < network.nodes_.size(); i++) {
-        os << network.nodes_[i].next_arrival << "\t"
-            << network.nodes_[i].next_departure << "\t"
-            << network.nodes_[i].size << "\t";
+        const Network::Node& node = network.nodes_[i];
+        os << node.next_arrival << "\t";
+        if (node.next_departure == None) {
+            os << " ";
+        } else {
+            os << node.next_departure;
+        }
+        os << "\t" << node.size << "\t";
     }
 
-    return os << network.token_.node_no + 1 << "\t"
-        << network.token_.timeout << "\t"
-        << network.token_.next_pass_time;
+    os << network.token_.node_no + 1 << "\t";
+
+    if (network.token_.timeout == None) {
+        os << " ";
+    } else if (network.token_.timeout == Timeout) {
+        os << "*";
+    } else {
+        os << network.token_.timeout;
+    }
+    os << "\t";
+
+    if (network.token_.next_pass_time == None) {
+        return os << " ";
+    } else {
+        return os << network.token_.next_pass_time;
+    }
 }
