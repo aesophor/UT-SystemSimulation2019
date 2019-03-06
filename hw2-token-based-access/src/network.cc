@@ -135,10 +135,12 @@ void Network::OnTokenTimeout() {
 
 void Network::OnPassToken() {
     token_.node_no = (token_.node_no + 1) % nodes_.size();
+    Network::Node& active_node = nodes_[token_.node_no];
 
-    if (nodes_[token_.node_no].size > 0) {
+    if (active_node.size > 0) {
         token_.timeout = master_clock_ + 15; // remove this hardcoded shit later
         token_.next_pass_time = None;
+        active_node.next_departure = master_clock_ + kPacketDepartInterval;
     } else {
         token_.next_pass_time = master_clock_ + 1;
     }
