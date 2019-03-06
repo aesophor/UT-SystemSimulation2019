@@ -5,6 +5,7 @@
 3. If the token times out, but the active network node is still sending packets, wait until it is finished
 
 ## C++ Event-Driven Programming
+* Conforms to Google C++ style guide except for indentation (I use 4 spaces instead of 2)
 * Four network events which are specific to this simulation are defined in `network_events.h`
 * All event handlers are lambdas, see `Network::Network()`
 * When an event is fired, all handlers of that event type will be invoked
