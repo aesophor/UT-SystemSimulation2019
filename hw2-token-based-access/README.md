@@ -4,7 +4,7 @@
 2. The network token times out per 15 seconds
 3. If the token times out, but the active network node is still sending packets, wait until it is finished
 
-## Event-Driven Programming
+## C++ Event-Driven Programming
 * Four network events which are specific to this simulation are defined in `network_events.h`
 * All event handlers are lambdas, see `Network::Network()`
 * When an event is fired, all handlers of that event type will be invoked
