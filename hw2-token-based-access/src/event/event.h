@@ -5,7 +5,9 @@
 
 enum class EventType {
     ARRIVAL,
-    DEPARTURE
+    DEPARTURE,
+    TOKEN_TIMEOUT,
+    PASS_TOKEN
 };
 
 
