@@ -1,3 +1,5 @@
+// Copyright 2019 Marco Wang <m.aesophor@gmail.com>
+
 #include "network.h"
 
 #include <vector>

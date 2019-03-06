@@ -1,3 +1,5 @@
+// Copyright 2019 Marco Wang <m.aesophor@gmail.com>
+
 #ifndef NETWORK_EVENTS_H_
 #define NETWORK_EVENTS_H_
 

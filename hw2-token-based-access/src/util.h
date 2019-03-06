@@ -1,3 +1,5 @@
+// Copyright 2019 Marco Wang <m.aesophor@gmail.com>
+
 #ifndef UTIL_H_
 #define UTIL_H_
 
