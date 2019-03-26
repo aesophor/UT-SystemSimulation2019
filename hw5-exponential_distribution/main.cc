@@ -61,6 +61,6 @@ int main() {
             << X.at(i) << "\t  "
             << x.at(i) << "\t  "
             << cdf.at(i) << "\t  "
-            << res.at(i) << endl << endl;
+            << res.at(i) << endl;
     }
 }
