@@ -22,7 +22,7 @@ int CountLessEqualThan(const vector<int>& nums, int target) {
 int main() {
   srand(time(nullptr));
 
-  const int kTotal = 1000;
+  const int kTotal = 1000000;
   const double kLambda = 4;
   const double kExp = 2.71828183;
 
