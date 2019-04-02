@@ -48,7 +48,7 @@ int main() {
 
 
   // Calulate poisson distribution
-  cout << endl << "N\tP(N<n)" << endl;
+  cout << endl << "N\tP(N<=n)" << endl;
   for (int i = 0; i < 100; i++) {
     int count = CountLessEqualThan(nums, i);
     double freq = (double) count / kTotal;
