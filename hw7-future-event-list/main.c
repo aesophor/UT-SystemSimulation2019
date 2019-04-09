@@ -17,4 +17,13 @@ int main() {
 
   removeHead(list_head, &list_head);
   printList(list_head);
+
+  removeHead(list_head, &list_head);
+  printList(list_head);
+  
+  removeHead(list_head, &list_head);
+  printList(list_head);
+
+  insertNode(list_head, &list_head, newNode(0, 5));
+  printList(list_head);
 }
