@@ -9,4 +9,4 @@ all:
 	rm $(BIN)
 
 run:
-	./main
+	./$(BIN)
