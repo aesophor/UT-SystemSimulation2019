@@ -65,4 +65,4 @@
   * serial test
   * auto-correlation test
   * runs test
-  * chi-square test (從實驗結果，看分布是否符合我們的假設，我們假設pseudo-random numbers 爲 uniformly distributed。實驗結果見hw2目錄)
+  * chi-square test (從實驗結果，看分布是否符合我們的假設，我們假設pseudo-random numbers 爲 uniformly distributed。[實驗結果](https://github.com/aesophor/UT-SystemSimulation2019/tree/master/hw4-chi-square-test))
