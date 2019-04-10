@@ -17,11 +17,6 @@ alpha = 0.05
 
 in this case, degree of freedom = 10 - 1 = 9
 
-## Materials
-* [課堂slide](http://eeclass.utaipei.edu.tw/media/39939/#14_f11153eb841c676d1a46c5299bf3c8d1)
-* [Tutorial from Khan Academy](https://www.youtube.com/watch?v=2QeDRsxSF9M)
-* [Another tutorial](https://www.youtube.com/watch?v=WXPBoFDqNVk)
-
 ## Result
 ```
 [*] Generating 100 random numbers:
@@ -31,3 +26,8 @@ in this case, degree of freedom = 10 - 1 = 9
 0.9 0.9 0.1 0.1 1.6 0.1 0 0.1 0.4 1.6 result: 5.8
 Passed
 ```
+
+## Materials
+* [課堂slide](http://eeclass.utaipei.edu.tw/media/39939/#14_f11153eb841c676d1a46c5299bf3c8d1)
+* [Tutorial from Khan Academy](https://www.youtube.com/watch?v=2QeDRsxSF9M)
+* [Another tutorial](https://www.youtube.com/watch?v=WXPBoFDqNVk)
