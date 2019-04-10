@@ -10,6 +10,18 @@
 * 如果通過, 代表假設H0正確 -> uniformly distributed!
 * 如果沒過, 代表假設H0錯誤 -> NOT uniformly distributed!
 
+## Notes
+alpha = 0.05
+
+查表找degree of freedom的時候, degree of freedom = 項目數 - 1
+
+in this case, degree of freedom = 10 - 1 = 9
+
+## Materials
+* [課堂slide](http://eeclass.utaipei.edu.tw/media/39939/#14_f11153eb841c676d1a46c5299bf3c8d1)
+* [Tutorial from Khan Academy](https://www.youtube.com/watch?v=2QeDRsxSF9M)
+* [Another tutorial](https://www.youtube.com/watch?v=WXPBoFDqNVk)
+
 ## Result
 ```
 [*] Generating 100 random numbers:
