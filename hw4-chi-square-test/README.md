@@ -2,13 +2,13 @@
 
 將[0,1]切出10個interval, 並產生100個隨機 double, 記錄其分布狀況
 
-H0: 這100個數是uniformly distributed
-H1: 不是
+* H0: 這100個數是uniformly distributed
+* H1: 不是
 
 我們期望pseudo-random numbers是否符合假設H0,
 所以看看這100個double是否通過chi-square測試,
-如果通過, 代表假設H0正確 -> uniformly distributed!
-如果沒過, 代表假設H0錯誤 -> NOT uniformly distributed!
+* 如果通過, 代表假設H0正確 -> uniformly distributed!
+* 如果沒過, 代表假設H0錯誤 -> NOT uniformly distributed!
 
 ## Result
 ```
