@@ -25,16 +25,17 @@ int main() {
   // Linear Congruential Generator
   result = Vec2String(random_util::LinearCongruential(1, 2, 1, 10, 8)); // a, c, m, count
   assert(result == "1 3 7 5 1 3 7 5");
-  cout << result << endl;
 
   result = Vec2String(random_util::LinearCongruential(1, 1, 7, 10, 8)); // a, c, m, count
   assert(result == "1 8 5 2 9 6 3 0");
-  cout << result << endl;
 
 
   // Quadratic Congruential Generator
   result = Vec2String(random_util::QuadraticCongruential(1, 1, 2, 5, 7, 10, 10)); // a2, a2, c, m, count
-  cout << result << endl;
+
+  for (int i = 0; i < 100; i++) {
+    cout << random_util::Rand(5, 12) << endl;
+  }
 
 
   cout << "All tests has passed" << endl;

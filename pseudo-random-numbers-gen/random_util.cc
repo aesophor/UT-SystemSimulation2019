@@ -10,6 +10,10 @@ using std::endl;
 
 namespace random_util {
 
+int Rand(int low, int hi) {
+  return (rand() % (hi + 1 - low)) + low;
+}
+
 vector<int> LinearCongruential(int seed, int a, int c, int m, int count) {
   // The congruential method uses the following recursive relationship
   // to generate random numbers: Xi+1 = (a * Xi + c) % m
@@ -30,34 +34,6 @@ vector<int> QuadraticCongruential(int seed1, int seed2, int a1, int a2, int c, i
 
   for (int i = 2; i < count; i++) {
     result[i] = (int)(a1 * pow(result[i - 1], 2) + a2 * result[i - 2] + c) % m;
-  }
-  return result;
-}
-
-int Tausworthe(bool seed, const vector<int>& a) {
-  static const int kIntBitCount = 8;
-
-  vector<bool> bits(kIntBitCount, false);
-  bits[kIntBitCount - 1] = seed;
-
-  for (int i = kIntBitCount - 1; i >= 0; i--) {
-    for (auto bit : bits) {
-      cout << bit << " ";
-    }
-    cout << endl;
-
-    int current = 0;
-    int a_idx = 0;
-    for (int j = i + 1; j < kIntBitCount; j++, a_idx++) {
-      current += a[a_idx] * bits[j];
-    }
-    bits[i] = current % 2;
-  }
-
-  int result = 0;
-  for (auto bit : bits) {
-    result <<= 1;
-    result += bit;
   }
   return result;
 }
