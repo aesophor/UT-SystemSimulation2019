@@ -43,8 +43,7 @@ expRand(double lambda) {
 static void
 onArrival() {
   // Schedule the next arrival event.
-  double r = expRand(arr_lambda);
-  insertNode(fel_head, &fel_head, newNode(ARRIVAL, master_clock + r));
+  insertNode(fel_head, &fel_head, newNode(ARRIVAL, master_clock + expRand(arr_lambda)));
 
   if (is_busy) { // server is busy
     insertHead(customer_q_head, &customer_q_head, newNode(0, master_clock));
