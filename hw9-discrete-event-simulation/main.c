@@ -6,12 +6,17 @@
 #include "list.h"
 
 static float arr_lambda;
-static float dep_labmda;
+static float dep_lambda;
 static float simulation_time;
 
 static float master_clock;
 static Node* fel_head = NULL;
-static Node* customer_q = NULL;
+static Node* customer_q_head = NULL;
+static int is_busy = 0;
+
+static float waiting_time_sum = 0;
+static int num_people = 0;
+
 
 static double doubleRand(double min, double max);
 static double expRand(double lambda);
@@ -37,12 +42,32 @@ expRand(double lambda) {
 // Event handlers
 static void
 onArrival() {
+  // Schedule the next arrival event.
+  double r = expRand(arr_lambda);
+  insertNode(fel_head, &fel_head, newNode(ARRIVAL, master_clock + r));
 
+  if (is_busy) { // server is busy
+    insertHead(customer_q_head, &customer_q_head, newNode(0, master_clock));
+  } else { // server is empty
+    is_busy = 1;
+    // Schedule a departure event for this customer
+    insertNode(fel_head, &fel_head, newNode(DEPARTURE, master_clock + expRand(dep_lambda)));
+  }
 }
 
 static void
 onDeparture() {
-
+  if (!customer_q_head) { // customer q is empty
+    is_busy = 0;
+  } else { // not empty
+    Node* tail = removeTail(customer_q_head, &customer_q_head);
+    float delay = master_clock - tail->clock;
+    waiting_time_sum += delay;
+    num_people++;
+    free(tail);
+    // Schedule next departure event for the next customer.
+    insertNode(fel_head, &fel_head, newNode(DEPARTURE, master_clock + expRand(dep_lambda)));
+  }
 }
 
 
@@ -55,10 +80,11 @@ main(int argc, char* args[]) {
 
   srand(time(NULL));
   arr_lambda = atof(args[1]);
-  dep_labmda = atof(args[2]);
+  dep_lambda = atof(args[2]);
   simulation_time = atof(args[3]);
 
   master_clock = .0f;
+  insertNode(fel_head, &fel_head, newNode(ARRIVAL, 5.0));
 
   while (master_clock < simulation_time) {
     Node* current_event = removeHead(fel_head, &fel_head);
@@ -67,14 +93,21 @@ main(int argc, char* args[]) {
     switch (current_event->type) {
       case ARRIVAL:
         onArrival();
+        //printList(fel_head);
         break;
       case DEPARTURE:
         onDeparture();
+        //printList(fel_head);
         break;
       default:
         printf("ERROR: No such event type!\n");
         break;
     }
   }
+
+  // Report
+  printf("total waiting time: %f\n", waiting_time_sum);
+  printf("total number of people: %d\n", num_people);
+  printf("avg waiting time: %f\n", waiting_time_sum / num_people);
   return EXIT_SUCCESS;
 }
