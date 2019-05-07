@@ -49,6 +49,7 @@ onArrival() {
     insertHead(customer_q_head, &customer_q_head, newNode(0, master_clock));
   } else { // server is empty
     is_busy = 1;
+    num_people++;
     // Schedule a departure event for this customer
     insertNode(fel_head, &fel_head, newNode(DEPARTURE, master_clock + expRand(dep_lambda)));
   }
