@@ -102,6 +102,7 @@ main(int argc, char* args[]) {
         printf("ERROR: No such event type!\n");
         break;
     }
+    free(current_event);
   }
 
   // Report
