@@ -1,3 +1,3 @@
-total waiting time: 88.467285
-total number of people: 31
-avg waiting time: 2.853783
+total waiting time: 118.207794
+total number of people: 49
+avg waiting time: 2.412404

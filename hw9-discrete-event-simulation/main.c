@@ -48,8 +48,8 @@ onArrival() {
   if (is_busy) { // server is busy
     insertHead(customer_q_head, &customer_q_head, newNode(0, master_clock));
   } else { // server is empty
-    is_busy = 1;
     num_people++;
+    is_busy = 1;
     // Schedule a departure event for this customer
     insertNode(fel_head, &fel_head, newNode(DEPARTURE, master_clock + expRand(dep_lambda)));
   }
@@ -93,11 +93,9 @@ main(int argc, char* args[]) {
     switch (current_event->type) {
       case ARRIVAL:
         onArrival();
-        //printList(fel_head);
         break;
       case DEPARTURE:
         onDeparture();
-        //printList(fel_head);
         break;
       default:
         printf("ERROR: No such event type!\n");

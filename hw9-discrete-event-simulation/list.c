@@ -18,12 +18,17 @@ insertNode(Node* list_head, Node** list_head_ref, Node* node) {
     return;
   }
 
-  Node* ptr = list_head;
-  while (ptr->next && ptr->clock < node->clock) {
-    ptr = ptr->next;
+  if (node->clock < list_head->clock) {
+    insertHead(list_head, list_head_ref, node);
+    return;
+  } else {
+    Node* ptr = list_head;
+    while (ptr->next && ptr->clock < node->clock) {
+      ptr = ptr->next;
+    }
+    node->next = ptr->next;
+    ptr->next = node;
   }
-  node->next = ptr->next;
-  ptr->next = node;
 }
 
 // 1->2->4->5
