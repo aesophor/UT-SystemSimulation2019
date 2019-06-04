@@ -70,6 +70,13 @@ onDeparture() {
   }
 }
 
+static double
+getTheoryWaitingTime() {
+  double l = arr_lambda / (dep_lambda - arr_lambda);
+  double w = l / (arr_lambda);
+  return w - 1 / dep_lambda;
+}
+
 
 int
 main(int argc, char* args[]) {
@@ -84,7 +91,7 @@ main(int argc, char* args[]) {
   simulation_time = atof(args[3]);
 
   master_clock = .0f;
-  insertNode(fel_head, &fel_head, newNode(ARRIVAL, 5.0));
+  insertNode(fel_head, &fel_head, newNode(ARRIVAL, master_clock + expRand(arr_lambda)));
 
   while (master_clock < simulation_time) {
     Node* current_event = removeHead(fel_head, &fel_head);
@@ -105,8 +112,10 @@ main(int argc, char* args[]) {
   }
 
   // Report
-  printf("total waiting time: %f\n", waiting_time_sum);
-  printf("total number of people: %d\n", num_people);
-  printf("avg waiting time: %f\n", waiting_time_sum / num_people);
+  //printf("total waiting time: %f\n", waiting_time_sum);
+  //printf("total number of people: %d\n", num_people);
+  printf("arr=%f\tdep=%f\t", arr_lambda, dep_lambda);
+  printf("平均等待時間: %f\t", waiting_time_sum / num_people);
+  printf("理論等待時間: %f\n", getTheoryWaitingTime());
   return EXIT_SUCCESS;
 }

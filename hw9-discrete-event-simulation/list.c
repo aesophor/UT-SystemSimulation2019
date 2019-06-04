@@ -72,6 +72,15 @@ removeTail(Node* list_head, Node** list_head_ref) {
   return ptr;
 }
 
+Node*
+getTail(Node* list_head) {
+  Node* ptr = list_head;
+  while (ptr->next) {
+    ptr = ptr->next;
+  }
+  return ptr;
+}
+
 void printList(Node* list_head) {
   Node* ptr = list_head;
   while (ptr) {

@@ -20,6 +20,7 @@ void insertHead(Node* list_head, Node** list_head_ref, Node* node);
 
 Node* removeHead(Node* list_head, Node** list_head_ref);
 Node* removeTail(Node* list_head, Node** list_head_ref);
+Node* getTail(Node* list_head);
 
 void printList(Node* list_head);
 
