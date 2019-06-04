@@ -114,7 +114,7 @@ main(int argc, char* args[]) {
   // Report
   //printf("total waiting time: %f\n", waiting_time_sum);
   //printf("total number of people: %d\n", num_people);
-  printf("arr=%f\tdep=%f\t", arr_lambda, dep_lambda);
+  printf("arr=%.2f\tdep=%.2f\t", arr_lambda, dep_lambda);
   printf("平均等待時間: %f\t", waiting_time_sum / num_people);
   printf("理論等待時間: %f\n", getTheoryWaitingTime());
   return EXIT_SUCCESS;
